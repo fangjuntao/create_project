@@ -48,9 +48,9 @@ for i in range(271):
             string1 = miRNA1 + ',' + miRNA2 + ',' + line[j]
             print(string1)
             string_all += string1 + '\n'
-fh = open('misimv1.0_association.txt', 'w', encoding='utf-8')
-fh.write(string_all)
-fh.close()
+# fh = open('misimv1.0_association.txt', 'w', encoding='utf-8')
+# fh.write(string_all)
+# fh.close()
 
 path4 = 'misimv1.0_association.txt'
 
@@ -58,19 +58,25 @@ mir_similarity_association = np.loadtxt(path4, dtype=np.str, delimiter=',')  #mi
 
 data_misim1 = mir_similarity_association[0:].tolist()
 string_data  = ''
+count_not_exist = 0
 #将联系转化为HMDDv3.2中的对应关系
 for list2 in data_misim1:
     miRNA1,miRNA2,smi = list2
     smi  = smi.replace('\'', '')
-    cid1  = test_dict[miRNA1]
-    cid2  = test_dict[miRNA2]
-    string1 = cid1+','+cid2+','+smi
-    # test_dict2[cid] = name
-    print(string1)
-    string_data += string1+'\n'
+    if (miRNA1  in test_dict ) and (miRNA2  in test_dict):
+        cid1 = test_dict[miRNA1]
+        cid2 = test_dict[miRNA2]
+        string1 = cid1 + ',' + cid2 + ',' + smi
+        # test_dict2[cid] = name
+        print(string1)
+        string_data += string1 + '\n'
+    else :
+        print("不存在")
+        count_not_exist = count_not_exist+1   #3212次
+
 # print(json.dumps(test_dict, ensure_ascii=False, indent=4))
 
-fh = open('smi_association_misim.txt', 'w', encoding='utf-8')
+fh = open('smi_association_forHMDDv3.2.txt', 'w', encoding='utf-8')
 fh.write(string_data)
 fh.close()
 
