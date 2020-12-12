@@ -38,7 +38,7 @@ for list2 in data2:
     string_all += string1+'\n'
 # print(json.dumps(test_dict, ensure_ascii=False, indent=4))
 
-fh = open('smi_association.txt', 'w', encoding='utf-8')
+fh = open('misimv2_for_HMDDv3.2/smi_association.txt', 'w', encoding='utf-8')
 fh.write(string_all)
 fh.close()
 

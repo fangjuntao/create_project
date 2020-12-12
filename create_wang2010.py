@@ -48,11 +48,11 @@ for i in range(271):
             string1 = miRNA1 + ',' + miRNA2 + ',' + line[j]
             print(string1)
             string_all += string1 + '\n'
-# fh = open('misimv1.0_association.txt', 'w', encoding='utf-8')
-# fh.write(string_all)
-# fh.close()
+fh = open('wang2010_for_HMDDv3.2/misimv1.0_association.txt', 'w', encoding='utf-8')
+fh.write(string_all)
+fh.close()
 
-path4 = 'misimv1.0_association.txt'
+path4 = 'wang2010_for_HMDDv3.2/misimv1.0_association.txt'
 
 mir_similarity_association = np.loadtxt(path4, dtype=np.str, delimiter=',')  #misimi v1  miRNA的相似性联系（不含和自身，  A和B 与B和A同时包含）
 
@@ -76,7 +76,7 @@ for list2 in data_misim1:
 
 # print(json.dumps(test_dict, ensure_ascii=False, indent=4))
 
-fh = open('smi_association_forHMDDv3.2.txt', 'w', encoding='utf-8')
+fh = open('wang2010_for_HMDDv3.2/smi_association_forHMDDv3.2.txt', 'w', encoding='utf-8')
 fh.write(string_data)
 fh.close()
 
